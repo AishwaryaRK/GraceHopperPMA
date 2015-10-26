@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="Dashboard">
+<head>
+	<title>Dashboard</title>
+	<link href='css/bootstrap.min.css' rel='stylesheet'>
+	<link href='css/main.css' rel='stylesheet'>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type="text/javascript" src="js/appAngular.js"></script>
+	<script type='text/javascript' src='https://dataviz.paypalcorp.com/javascripts/api/viz_v1.js'></script>
+</head>
+<body>
+
+	<div class='logo navbar navbar-inverse navbar-fixed-top '>
+		<a href="#"><h2>Project Management App</h2></a>
+	</div>
+	<div class='clearfix' style="height:100px"></div>
+
+	<div class='container-fluid'>
+		<div class='row'>
+			
+			
+
+			
+		</div>
+	</div>
+
+	<div class='clearfix' style="height:50px"></div>
+
+	<div class='footer navbar-fixed-bottom navbar navbar-inverse'>
+		<div ng-controller="FooterController">
+			<p>
+				&copy; {~lb}{~lb}copyrightLabel{~rb}{~rb}
+			</p>
+		</div>
+	</div>
+
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	<script src='js/bootstrap.min.js'></script>
+
+</body>
