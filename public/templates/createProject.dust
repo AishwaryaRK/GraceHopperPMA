@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="Dashboard">
+<html ng-app="PMA">
 <head>
 	<title>Dashboard</title>
 	<link href='css/bootstrap.min.css' rel='stylesheet'>
 	<link href='css/main.css' rel='stylesheet'>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 	<script type="text/javascript" src="js/appAngular.js"></script>
 	<script type='text/javascript' src='https://dataviz.paypalcorp.com/javascripts/api/viz_v1.js'></script>
 </head>
@@ -15,26 +20,139 @@
 	</div>
 	<div class='clearfix' style="height:100px"></div>
 
-	<div class='container-fluid'>
-		<div class='row'>
-			
-			
+	<div class='container' ng-controller="ProjectController as projectCtrl">
+		<div class='row' ng-show="isCreateProjectPg">
+			<div class='col-md-4'></div>
+			<div class='col-md-4' >
+				<form name="createProjectForm" ng-submit="createProjectForm.$valid" novalidate>
+					<h3 class="subject">Create Project</h3>
+					<div class='clearfix' style="height:25px"></div>
+					
+					<fieldset class="form-group">
+						<input required type="text" ng-model="project.name" ng-pattern="/^[ a-zA-Z]+$/" class="form-control" placeholder="Project Name" title="name" />
+					</fieldset>
+					<fieldset class="form-group">
+						<input required type="text" ng-model="project.head" ng-pattern="/^[ a-zA-Z]+$/" class="form-control" placeholder="Project Head" title="head" />
+					</fieldset>
+					<div class='clearfix' style="height:25px"></div>
+					
+					<div>
+						<label class='lead' style='color:gray; font-size:18px'>Duration </label>
+					</div>
+					<fieldset class="form-group">
+						<div class='col-md-3'>
+							<label class='lead' style='color:gray; font-size:15px'>From: </label>
+						</div>
+						<div class='col-md-6'>
+							<input required type="date" ng-model="project.startDate" class="form-control" title="startDate" />
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<div class='col-md-3'>
+							<label class='lead' style='color:gray; font-size:15px'>To: </label>
+						</div>
+						<div class='col-md-6'>
+							<input required type="date" ng-model="project.endDate" class="form-control" title="endDate" />
+						</div>
+					</fieldset>
+					<div class='clearfix' style="height:25px"></div>
+					
+					<div>
+						<label class='lead' style='color:gray; font-size:18px'>Location </label>
+					</div>
+					
+					<div ng-repeat="location in project.locations">
+						<p class='lead' style='color:gray; font-size:15px'> - {~lb}{~lb}location.locationName{~rb}{~rb}</p>
+					</div>
+					<fieldset class="form-group">
+						<div class='col-md-6'>
+							<input required type="text" class="form-control" placeholder="add location" title="location" ng-model="projectCtrl.location"/>
+						</div>
+						<div class='col-md-3'>
+							<a ng-click="projectCtrl.addLocation()" style="font-size:20px">
+								<i class='glyphicon glyphicon-plus-sign'></i>
+							</a>
+						</div>
+					</fieldset>
 
-			
+					<div>
+						<label class='lead' style='color:gray; font-size:18px'>Tasks </label>
+					</div>
+					<div ng-repeat="task in project.tasks">
+						<p class='lead' style='color:gray; font-size:15px'> - {~lb}{~lb}task.taskName{~rb}{~rb}</p>
+					</div>
+					<fieldset class="form-group">
+						<div class='col-md-6'>
+							<input required type="text" class="form-control" placeholder="add task" title="task" ng-model="projectCtrl.task"/>
+						</div>
+						<div class='col-md-3'>
+							<a ng-click="projectCtrl.addTask()" style="font-size:20px">
+								<i class='glyphicon glyphicon-plus-sign'></i>
+							</a>
+						</div>
+					</fieldset>
+
+
+					<div class='clearfix' style="height:50px"></div>
+					<fieldset class="form-group">
+						<button class='btn btn-primary pull-right' style="font-size: 15px" ng-click="projectCtrl.showLocationForm()">
+							Proceed
+						</button>
+					</fieldset>
+				</form>
+			</div>
+			<div class='col-md-4'></div>
 		</div>
+
+		<div class='row container' ng-show="isLocationPg">
+			<div class='col-md-4'></div>
+			<div class='col-md-4' >
+			<div class='container'>
+				<div ng-repeat="location in project.locations">
+					<button class='btn btn-primary location' style="font-size: 15px" ng-click="projectCtrl.selectLocation(location)">
+							{~lb}{~lb}location.locationName{~rb}{~rb}
+					</button>
+				</div>
+			</div>	
+				<form name="locationForm" ng-submit="locationForm.$valid" novalidate>
+					<div class='clearfix' style="height:25px"></div>
+
+					<fieldset class="form-group">
+						<input required type="text" ng-model="locationObj.locationHead" ng-pattern="/^[ a-zA-Z]+$/" class="form-control" placeholder="Location Head" title="locationHead" />
+					</fieldset>
+					<div class='clearfix' style="height:25px"></div>
+
+					<fieldset class="form-group">
+						<input required type="number" min="1" ng-model="locationObj.fund" class="form-control" placeholder="Fund" title="fund" />
+					</fieldset>
+					<div class='clearfix' style="height:25px"></div>
+
+					<div>
+						<label class='lead' style='color:gray; font-size:18px'>Resources </label>
+					</div>
+
+					<div class='clearfix' style="height:50px"></div>
+					<fieldset class="form-group">
+						<input type="submit" class="btn btn-primary pull-right" value="Proceed" />
+					</fieldset>
+				</form>
+			</div>
+		<div class='col-md-4'></div>
 	</div>
 
-	<div class='clearfix' style="height:50px"></div>
+</div>
 
-	<div class='footer navbar-fixed-bottom navbar navbar-inverse'>
-		<div ng-controller="FooterController">
-			<p>
-				&copy; {~lb}{~lb}copyrightLabel{~rb}{~rb}
-			</p>
-		</div>
+<div class='clearfix' style="height:50px"></div>
+
+<div class='footer navbar-fixed-bottom navbar navbar-inverse'>
+	<div ng-controller="FooterController">
+		<p>
+			&copy; {~lb}{~lb}copyrightLabel{~rb}{~rb}
+		</p>
 	</div>
+</div>
 
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-	<script src='js/bootstrap.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+<script src='js/bootstrap.min.js'></script>
 
 </body>
