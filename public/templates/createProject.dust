@@ -123,7 +123,7 @@
 					<div class='clearfix' style="height:25px"></div>
 
 					<fieldset class="form-group">
-						<input required type="number" min="1" ng-model="locationObj.fund" class="form-control" placeholder="Fund" title="fund" />
+						<input required type="number" min="1" ng-model="locationObj.totalFund" class="form-control" placeholder="Fund" title="fund" />
 					</fieldset>
 					<div class='clearfix' style="height:25px"></div>
 
@@ -133,7 +133,9 @@
 
 					<div class='clearfix' style="height:50px"></div>
 					<fieldset class="form-group">
-						<input type="submit" class="btn btn-primary pull-right" value="Proceed" />
+						<button class='btn btn-primary pull-right' style="font-size: 15px" ng-click="projectCtrl.submitForm()">
+							Submit
+						</button>
 					</fieldset>
 				</form>
 			</div>
