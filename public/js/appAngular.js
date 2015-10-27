@@ -7,6 +7,8 @@
 		$scope.isCreateProjectPg = true;
 		$scope.isLocationPg = false;
 
+		$scope.locationObj = {};
+
 		alert("in controller");
 		$scope.project = {
 			name : null,
@@ -37,22 +39,30 @@
 			};
 			$scope.project.tasks.push(taskEle);
 			this.task = null;
-			alert(JSON.stringify($scope.project));
+			
 		};
 
 		this.showLocationForm = function () {
 			$scope.isCreateProjectPg = false;
 			$scope.isLocationPg = true;
+			$scope.locationObj = $scope.project.locations[0];
 		};
 
-		$scope.locationObj = $scope.locations[0];
+		
+		alert("locationObj");
+		alert(JSON.stringify($scope.locationObj));
 		this.selectLocation = function (inputLocation) {
-			for (var i = 0; i < $scope.locations.length; i++) {
-				if ($scope.locations[i].locationName == inputLocation.locationName){
-					$scope.locationObj = $scope.locations[i];
+			alert(JSON.stringify(inputLocation));
+			for (var i = 0; i < $scope.project.locations.length; i++) {
+				if ($scope.project.locations[i].locationName == inputLocation.locationName){
+					$scope.locationObj = $scope.project.locations[i];
 					break;
 				}
 			}
+		};
+
+		this.submitForm = function () {
+			alert(JSON.stringify($scope.project));
 		};
 
 		// var fund;
