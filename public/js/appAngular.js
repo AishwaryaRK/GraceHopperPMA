@@ -9,7 +9,6 @@
 
 		$scope.locationObj = {};
 
-		alert("in controller");
 		$scope.project = {
 			name : null,
 			head : null,
@@ -49,10 +48,10 @@
 		};
 
 		
-		alert("locationObj");
-		alert(JSON.stringify($scope.locationObj));
 		this.selectLocation = function (inputLocation) {
-			alert(JSON.stringify(inputLocation));
+			$('input[type="submit"]').click(function(){
+				$(this).css('color','orange');
+			});
 			for (var i = 0; i < $scope.project.locations.length; i++) {
 				if ($scope.project.locations[i].locationName == inputLocation.locationName){
 					$scope.locationObj = $scope.project.locations[i];
