@@ -1,0 +1,89 @@
+{
+	"name" : "Projects",
+	"description" : "Projects Chart",
+	"children" : [
+	{
+		"name" : "Education",
+		"description" : "Education Projects",
+		"children" : [
+		{
+			"name" : "GSAP",
+			"description" : "Government School Adoption Programme",
+			"children" : [
+			{"name" : "Chennai", "description" : "Chennai Instance", "size" : 55000},
+			{"name" : "Bangalore", "description" : "Bangalore Instance", "size" : 45000}
+			]
+		},
+		{
+			"name" : "New Home",
+			"description" : "Shelter homes for orphans and destitute children",
+			"children" : [
+			{"name" : "Bangalore", "description" : "Bangalore Instance", "size" : 70000},
+			{"name" : "Kolkata", "description" : "Kolkata Instance", "size" : 10000},
+			{"name" : "Mumbai", "description" : "Mumbai Instance", "size" : 20000}
+			]
+		},
+		{
+			"name" : "Scholarship",
+			"description" : "Scholarship for higher studies",
+			"children" : [
+			{"name" : "Chennai", "description" : "Chennai Instance", "size" : 45000},
+			{"name" : "Mumbai", "description" : "Mumbai Instance", "size" : 25000},
+			{"name" : "Delhi", "description" : "Delhi Instance", "size" : 15000}
+			]
+		}
+		]
+	},
+	{
+		"name" : "Skill Dev",
+		"description" : "SKill Development Projects",
+		"children" : [
+		{
+			"name" : "WEP",
+			"description" : "Women Empowerment Initiative",
+			"children" : [
+			{"name" : "Chennai", "description" : "Chennai Instance", "size" : 50000},
+			{"name" : "Hyderabad", "description" : "Hyderabad Instance", "size" : 50000}
+			]
+		},
+		{
+			"name" : "RHSDC",
+			"description" : "Reach Higher Skill Development Center",
+			"children" : [
+			{"name" : "Hyderabad", "description" : "Hyderabad Instance", "size" : 60000},
+			{"name" : "Bangalore", "description" : "Bangalore Instance", "size" : 40000}
+			]
+		},
+		{
+			"name" : "RFCC",
+			"description" : "Bangalore Instance",
+			"children" : [
+			{"name" : "Chennai", "description" : "Chennai Instance", "size" : 80000},
+			{"name" : "Bangalore", "description" : "Bangalore Instance", "size" : 20000}
+			]
+		}
+		]		
+	},
+	{
+		"name" : "Health",
+		"description" : "Health Projects",
+		"children" : [
+		{
+			"name" : "Girls Glory",
+			"description" : "Hygiene and sanitation care for girls",
+			"children" : [
+			{"name" : "Mumbai", "description" : "Mumbai Instance", "size" : 73000},
+			{"name" : "Delhi", "description" : "Delhi Instance", "size" : 27000}
+			]
+		},
+		{
+			"name" : "Oldage Home",
+			"description" : "Home for the elderly",
+			"children" : [
+			{"name" : "Chennai", "description" : "Chennai Instance", "size" : 100000}
+			]
+		}
+		]		
+	}
+	]
+}
